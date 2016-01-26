@@ -4,7 +4,6 @@ import com.android.SdkConstants;
 import com.android.builder.core.AndroidBuilder;
 import com.android.builder.core.ErrorReporter;
 import com.android.ide.common.process.DefaultProcessExecutor;
-import com.android.ide.common.process.LoggedProcessOutputHandler;
 import com.android.manifmerger.ManifestMerger2;
 import com.android.utils.ILogger;
 import com.simpligility.maven.plugins.android.AbstractAndroidMojo;
