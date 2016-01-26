@@ -6,8 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import com.google.repacked.apache.commons.io.IOUtils;
 import com.simpligility.maven.plugins.android.phase01generatesources.AbstractDataBinderMojo;
+
+import org.apache.commons.io.IOUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
