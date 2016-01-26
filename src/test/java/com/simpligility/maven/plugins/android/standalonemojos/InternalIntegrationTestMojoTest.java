@@ -281,8 +281,7 @@ public class InternalIntegrationTestMojoTest extends AbstractAndroidMojoTestCase
                     }
 
                     @Override
-                    public String installPackage(String s, boolean b, String... strings) throws InstallException {
-                        return null;
+                    public void installPackage(String s, boolean b, String... strings) throws InstallException {
                     }
 
                     @Override
@@ -291,8 +290,8 @@ public class InternalIntegrationTestMojoTest extends AbstractAndroidMojoTestCase
                     }
 
                     @Override
-                    public String installRemotePackage(String s, boolean b, String... strings) throws InstallException {
-                        return null;
+                    public void installRemotePackage(String s, boolean b, String... strings) throws InstallException {
+
                     }
 
                     @Override
@@ -386,6 +385,25 @@ public class InternalIntegrationTestMojoTest extends AbstractAndroidMojoTestCase
                         return null;
                     }
 
+                    @Override
+                    public int getApiLevel() {
+                      // TODO Auto-generated method stub
+                      return 0;
+                    }
+
+                    @Override
+                    public boolean isRoot() throws TimeoutException, AdbCommandRejectedException, IOException,
+                        ShellCommandUnresponsiveException {
+                      // TODO Auto-generated method stub
+                      return false;
+                    }
+
+                    @Override
+                    public boolean root() throws TimeoutException, AdbCommandRejectedException, IOException,
+                        ShellCommandUnresponsiveException {
+                      // TODO Auto-generated method stub
+                      return false;
+                    }
 
                 });
                 return null;
