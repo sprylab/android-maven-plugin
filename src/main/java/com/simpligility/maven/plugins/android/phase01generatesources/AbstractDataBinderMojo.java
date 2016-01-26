@@ -2,7 +2,6 @@ package com.simpligility.maven.plugins.android.phase01generatesources;
 
 import javax.tools.Diagnostic;
 import java.io.File;
-import java.util.Arrays;
 
 import android.databinding.tool.LayoutXmlProcessor;
 import android.databinding.tool.util.L;
@@ -67,12 +66,21 @@ public abstract class AbstractDataBinderMojo extends AbstractAndroidMojo
    {
       if ( processor == null )
       {
-         processor = new LayoutXmlProcessor(
-               extractPackageNameFromAndroidManifest( androidManifestFile ),   //applicationPackage
-               Arrays.asList( new File[] { dataBindingResourceDirectory } ), //resources
-               new MavenFileWriter( getLog(), dataBindingBindingInfoDirectory.getAbsolutePath() ), //fileWriter
-               getAndroidSdk().getSdkMajorVersion(),      //minSdk
-               project.getPackaging().equals( AndroidExtension.AAR ) ); //isLibrary
+// used to be 
+//         processor = new LayoutXmlProcessor(
+//               extractPackageNameFromAndroidManifest( androidManifestFile ),   //applicationPackage
+//               Arrays.asList( new File[] { dataBindingResourceDirectory } ), //resources
+//               new MavenFileWriter( getLog(), dataBindingBindingInfoDirectory.getAbsolutePath() ), //fileWriter
+//               getAndroidSdk().getSdkMajorVersion(),      //minSdk
+//               project.getPackaging().equals( AndroidExtension.AAR ) ); //isLibrary
+        processor = new LayoutXmlProcessor(
+          extractPackageNameFromAndroidManifest( androidManifestFile ),   //applicationPackage
+          new MavenFileWriter( getLog(), dataBindingBindingInfoDirectory.getAbsolutePath() ), //fileWriter
+          getAndroidSdk().getSdkMajorVersion(),      //minSdk
+          project.getPackaging().equals( AndroidExtension.AAR ) //isLibrary
+        // TBD ... not sure about this yet.. // originalFileLookup)           
+            ); 
+
       }
       return processor;
    }
