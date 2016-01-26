@@ -5,7 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.databinding.tool.writer.JavaFileWriter;
-import com.google.repacked.apache.commons.io.IOUtils;
+
+import org.apache.commons.io.IOUtils;
 import org.apache.maven.plugin.logging.Log;
 
 /**
