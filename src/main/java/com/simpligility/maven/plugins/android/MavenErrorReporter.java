@@ -10,19 +10,20 @@
 package com.simpligility.maven.plugins.android;
 
 import com.android.annotations.NonNull;
-import com.android.builder.core.EvaluationErrorReporter;
+import com.android.builder.core.ErrorReporter;
 import com.android.builder.model.SyncIssue;
+import com.android.ide.common.blame.Message;
 import com.android.utils.ILogger;
 
 /**
  * @author kedzie
  */
-public class MavenEvaluationErrorReporter extends EvaluationErrorReporter
+public class MavenErrorReporter extends ErrorReporter
 {
 
    private ILogger logger;
 
-   public MavenEvaluationErrorReporter( ILogger logger, @NonNull EvaluationMode mode )
+   public MavenErrorReporter( ILogger logger, @NonNull EvaluationMode mode )
    {
       super( mode );
       this.logger = logger;
@@ -34,6 +35,13 @@ public class MavenEvaluationErrorReporter extends EvaluationErrorReporter
       logger.info( "Sync Error.  Data: " + data + "\tmsg: " + msg );
       return new SyncIssueImpl( 0, type, data, msg );
    }
+
+  @Override
+  public void receiveMessage( Message message ) 
+  {
+     logger.info( message .toString() );
+     // TBD anything else to do?
+  }
 }
 
 class SyncIssueImpl implements SyncIssue
