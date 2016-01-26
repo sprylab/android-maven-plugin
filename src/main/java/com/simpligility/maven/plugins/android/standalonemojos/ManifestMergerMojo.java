@@ -2,14 +2,14 @@ package com.simpligility.maven.plugins.android.standalonemojos;
 
 import com.android.SdkConstants;
 import com.android.builder.core.AndroidBuilder;
-import com.android.builder.core.EvaluationErrorReporter;
+import com.android.builder.core.ErrorReporter;
 import com.android.ide.common.process.DefaultProcessExecutor;
 import com.android.ide.common.process.LoggedProcessOutputHandler;
 import com.android.manifmerger.ManifestMerger2;
 import com.android.utils.ILogger;
 import com.simpligility.maven.plugins.android.AbstractAndroidMojo;
 import com.simpligility.maven.plugins.android.DefaultJavaProcessExecutor;
-import com.simpligility.maven.plugins.android.MavenEvaluationErrorReporter;
+import com.simpligility.maven.plugins.android.MavenErrorReporter;
 import com.simpligility.maven.plugins.android.common.AndroidExtension;
 import com.simpligility.maven.plugins.android.common.MavenManifestDependency;
 import com.simpligility.maven.plugins.android.configuration.ManifestMerger;
@@ -299,11 +299,10 @@ public class ManifestMergerMojo extends AbstractAndroidMojo
         AndroidBuilder builder = new AndroidBuilder( project.toString(), "created by Android Maven Plugin",
                 new DefaultProcessExecutor( logger ),
                 new DefaultJavaProcessExecutor( logger ),
-                new LoggedProcessOutputHandler( logger ),
-                new MavenEvaluationErrorReporter( logger, EvaluationErrorReporter.EvaluationMode.STANDARD ),
+                new MavenErrorReporter( logger, ErrorReporter.EvaluationMode.STANDARD ),
                 logger,
               false );
-
+        
         String minSdkVersion = null;
         String targetSdkVersion = null;
         int versionCode;
@@ -341,13 +340,13 @@ public class ManifestMergerMojo extends AbstractAndroidMojo
             }
         }
 
+        
         builder.mergeManifests(
                 androidManifestFile, new ArrayList<File>(), manifestDependencies, "",
                 versionCode, parsedVersionName,
                 minSdkVersion, targetSdkVersion, null,
                 destinationManifestFile.getPath(), null, ManifestMerger2.MergeType.APPLICATION,
                 new HashMap<String, String>(), parsedMergeReportFile );
-
     }
 
 }
