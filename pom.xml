@@ -43,8 +43,9 @@
 
     <!-- Attention - make sure that the tools version is the versions of 
       the transitive dependencies of the builder version -->
-    <android.builder.version>1.3.1</android.builder.version>
-    <android.tools.version>24.3.1</android.tools.version>
+    <android.builder.version>1.5.0</android.builder.version>
+    <android.tools.version>24.5.0</android.tools.version>
+    <android.databinding.version>1.0-rc5</android.databinding.version>
   </properties>
 
   <scm>
@@ -345,22 +346,8 @@
         <artifactId>google-api-services-androidpublisher</artifactId>
         <version>${publisher.version}</version>
       </dependency>
-
-      <dependency>
-        <groupId>com.android.databinding</groupId>
-        <artifactId>dataBinder</artifactId>
-        <version>1.0-rc2</version>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
-
-  <repositories>
-    <repository>
-      <id>jcenter</id>
-      <url>http://jcenter.bintray.com/</url>
-    </repository>
-  </repositories>
 
   <dependencies>
     <dependency>
@@ -372,12 +359,12 @@
       <groupId>com.android.tools</groupId>
       <artifactId>common</artifactId>
     </dependency>
-
     <dependency>
       <groupId>com.android.databinding</groupId>
-      <artifactId>dataBinder</artifactId>
+      <artifactId>compilerCommon</artifactId>
+      <version>${android.databinding.version}</version>
     </dependency>
-
+    
     <dependency>
       <groupId>org.sonatype.plexus</groupId>
       <artifactId>plexus-build-api</artifactId>
