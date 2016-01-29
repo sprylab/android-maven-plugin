@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.10689905591866376" branch-rate="0.09478827361563517" lines-covered="736" lines-valid="6885" branches-covered="291" branches-valid="3070" complexity="2.9990253411306043" version="2.1.1" timestamp="1454047699132">
+<coverage line-rate="0.10689905591866376" branch-rate="0.09478827361563517" lines-covered="736" lines-valid="6885" branches-covered="291" branches-valid="3070" complexity="2.9990253411306043" version="2.1.1" timestamp="1454098911990">
 	<sources>
-		<source>/media/sf_dev/github/simpligility/android-maven-plugin/target/checkout/target/generated-sources/annotations</source>
+		<source>/media/sf_dev/github/simpligility/android-maven-plugin/target/generated-sources/annotations</source>
+		<source>/media/sf_dev/github/simpligility/android-maven-plugin/target/generated-sources/plugin</source>
 		<source>--source</source>
-		<source>/media/sf_dev/github/simpligility/android-maven-plugin/target/checkout/target/generated-sources/plugin</source>
-		<source>/media/sf_dev/github/simpligility/android-maven-plugin/target/checkout/src/main/java</source>
+		<source>/media/sf_dev/github/simpligility/android-maven-plugin/src/main/java</source>
 	</sources>
 	<packages>
 		<package name="com.android.ddmlib.testrunner" line-rate="0.0" branch-rate="0.0" complexity="2.240740740740741">
