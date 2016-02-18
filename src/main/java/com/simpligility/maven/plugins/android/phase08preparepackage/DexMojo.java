@@ -16,13 +16,17 @@
  */
 package com.simpligility.maven.plugins.android.phase08preparepackage;
 
-import com.simpligility.maven.plugins.android.AbstractAndroidMojo;
-import com.simpligility.maven.plugins.android.IncludeExcludeSet;
-import com.simpligility.maven.plugins.android.CommandExecutor;
-import com.simpligility.maven.plugins.android.ExecutionException;
-import com.simpligility.maven.plugins.android.common.Const;
-import com.simpligility.maven.plugins.android.common.ZipExtractor;
-import com.simpligility.maven.plugins.android.configuration.Dex;
+import static com.simpligility.maven.plugins.android.InclusionExclusionResolver.filterArtifacts;
+import static com.simpligility.maven.plugins.android.common.AndroidExtension.AAR;
+import static com.simpligility.maven.plugins.android.common.AndroidExtension.APK;
+import static com.simpligility.maven.plugins.android.common.AndroidExtension.APKLIB;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -38,17 +42,13 @@ import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.jar.JarArchiver;
 import org.codehaus.plexus.archiver.util.DefaultFileSet;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static com.simpligility.maven.plugins.android.InclusionExclusionResolver.filterArtifacts;
-import static com.simpligility.maven.plugins.android.common.AndroidExtension.AAR;
-import static com.simpligility.maven.plugins.android.common.AndroidExtension.APK;
-import static com.simpligility.maven.plugins.android.common.AndroidExtension.APKLIB;
+import com.simpligility.maven.plugins.android.AbstractAndroidMojo;
+import com.simpligility.maven.plugins.android.CommandExecutor;
+import com.simpligility.maven.plugins.android.ExecutionException;
+import com.simpligility.maven.plugins.android.IncludeExcludeSet;
+import com.simpligility.maven.plugins.android.common.Const;
+import com.simpligility.maven.plugins.android.common.ZipExtractor;
+import com.simpligility.maven.plugins.android.configuration.Dex;
 
 /**
  * Converts compiled Java classes to the Android dex format.
@@ -634,7 +634,7 @@ public class DexMojo extends AbstractAndroidMojo
         
         Set< File> inputFiles = getDexInputFiles();  
         StringBuilder sb = new StringBuilder();
-        sb.append( '"' ).append( StringUtils.join( inputFiles, File.pathSeparatorChar ) ).append( '"' );
+        sb.append( StringUtils.join( inputFiles, File.pathSeparatorChar ) );
         commands.add( sb.toString() );
         
         String executable = getAndroidSdk().getMainDexClasses().getAbsolutePath();
